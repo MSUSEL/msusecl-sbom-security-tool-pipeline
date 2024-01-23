@@ -20,16 +20,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Run exploratory_data_analysis.sh
-echo "Running exploratory_data_analysis.sh..."
-./exploratory_data_analysis.sh
-
-# Check the exit status of exploratory_data_analysis.sh
-if [ $? -ne 0 ]; then
-    echo "exploratory_data_analysis.sh failed"
-    exit 1
-fi
-
 # Run preprocessing.sh
 echo "Running preprocessing.sh..."
 ./preprocessing.sh
@@ -37,6 +27,16 @@ echo "Running preprocessing.sh..."
 # Check the exit status of preprocessing.sh
 if [ $? -ne 0 ]; then
     echo "preprocessing.sh failed"
+    exit 1
+fi
+
+# Run exploratory_data_analysis.sh
+echo "Running exploratory_data_analysis.sh..."
+./exploratory_data_analysis.sh
+
+# Check the exit status of exploratory_data_analysis.sh
+if [ $? -ne 0 ]; then
+    echo "exploratory_data_analysis.sh failed"
     exit 1
 fi
 
